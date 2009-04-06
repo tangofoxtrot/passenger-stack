@@ -31,7 +31,13 @@ package :passenger, :provides => :appserver do
     [%Q(LoadModule passenger_module /usr/local/ruby-enterprise/lib/ruby/gems/1.8/gems/passenger-#{version}/ext/apache2/mod_passenger.so),
     %Q(PassengerRoot /usr/local/ruby-enterprise/lib/ruby/gems/1.8/gems/passenger-#{version}),
     %q(PassengerRuby /usr/local/bin/ruby),
-    %q(RailsEnv production)].each do |line|
+    %q(RailsEnv production),
+    %q(ErrorDocument 503 /503.html),
+    %q(RewriteEngine on),
+    %q(RewriteCond %{DOCUMENT_ROOT}/../tmp/stop.txt -f),
+    %q(RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f),
+    %q(RewriteRule ^(.*)$ /$1 [R=503,L])    
+    ].each do |line|
       post :install, "echo '#{line}' |sudo tee -a /etc/apache2/extras/passenger.conf"
     end
 
