@@ -13,3 +13,8 @@ package :git_dependencies do
   description 'Git Build Dependencies'
   apt 'git-core', :dependencies_only => true
 end
+
+package :subversion do
+  description 'Subversion Version Control'
+  apt 'subversion'
+end

@@ -9,6 +9,7 @@ package :apache, :provides => :webserver do
   end
 
   requires :build_essential
+  requires :subversion
 end
 
 package :apache2_prefork_dev do
