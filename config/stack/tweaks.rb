@@ -6,4 +6,5 @@ package :server_tweaks do
   post :install, 'sudo perl -pi -e \'s/(PermitRootLogin)\s+yes$/\1 no/g\' /etc/ssh/sshd_config'
   post :install, 'sudo perl -pi -e \'s/(Port)\s+22$/\1 222/g\' /etc/ssh/sshd_config'
   post :install, 'sudo /etc/init.d/ssh reload'
+  post :install, 'sudo adduser deploy'
 end
