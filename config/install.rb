@@ -1,5 +1,5 @@
 # Require our stack
-%w(essential apache scm ruby_enterprise memcached mysql image_libraries firewall image tweaks misc).each do |r|
+%w(essential apache scm ruby_enterprise memcached mysql image_libraries firewall image tweaks misc munin).each do |r|
   require File.join(File.dirname(__FILE__), 'stack', r)
 end
 
@@ -15,6 +15,7 @@ policy :passenger_stack, :roles => :app do
   
   requires :appserver               # Passenger
   requires :ruby_enterprise         # Ruby Enterprise edition
+  requires :monitoring       # Server monitoring such as Munin  
   requires :database                # MySQL
   requires :ruby_database_driver    # mysql
   requires :image_libraries         # Image Magick  
