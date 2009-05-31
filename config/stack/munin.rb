@@ -33,6 +33,6 @@ package :munin, :provides => :monitoring do
   verify do
     has_executable 'munin-node'
   end
-  requires :apache, :apache2_prefork_dev, :ruby_enterprise
+  requires :apache, :apache2_prefork_dev, :ruby_enterprise, :misc
 end
 
