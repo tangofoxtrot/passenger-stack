@@ -26,7 +26,7 @@ package :munin, :provides => :monitoring do
       %q(  </directory>),
       %q(</VirtualHost>) 
     ].each do |line|
-      post :install, "echo '#{line}' |sudo tee -a /etc/apache2/sites-available/munin.conf"
+      post :install, "echo '#{line}' |sudo tee -a /etc/apache2/sites-available/munin"
     end
   end
   
